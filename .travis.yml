@@ -6,14 +6,14 @@ env:
     - CENTOS_VERSION=7
     - UBUNTU_VERSION=18
 env:
-  - DOCKER_OS="CENTOS"
-  - DOCKER_OS="UBUNTU"
+  - DOCKER_OS=CENTOS
+  - DOCKER_OS=UBUNTU
 before_install:
   - chmod +x *.sh
 script:
   - echo "Build local image"
-  - if [ "$DOCKER_OS"="CENTOS" ]; then ./build-centos.sh ; fi
-  - if [ "$DOCKER_OS"="UBUNTU" ]; then ./build-ubuntu.sh ; fi
+  - if [[ "$DOCKER_OS" == "CENTOS" ]]; then ./build-centos.sh ; fi
+  - if [[ "$DOCKER_OS" == "UBUNTU" ]]; then ./build-ubuntu.sh ; fi
 jobs:
   include:
     - stage: deploy
