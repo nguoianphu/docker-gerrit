@@ -2,12 +2,8 @@ sudo: required
 services:
   - docker
 env:
-  global:
-    - CENTOS_VERSION=7
-    - UBUNTU_VERSION=18
-env:
-  - DOCKER_OS=CENTOS
-  - DOCKER_OS=UBUNTU
+  - DOCKER_OS=CENTOS CENTOS_VERSION=7
+  - DOCKER_OS=UBUNTU UBUNTU_VERSION=18
 before_install:
   - chmod +x *.sh
 script:
