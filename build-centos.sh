@@ -9,4 +9,4 @@ echo "Wait a few minutes until the Gerrit Code Review NNN ready message appears"
 docker ps -a
 docker exec -it my-docker-gerrit ps -ef
 docker logs my-docker-gerrit
-docker stop my-docker-gerrit
+docker stop my-docker-gerrit || true
