@@ -13,6 +13,5 @@ script:
 jobs:
   include:
     - stage: deploy
-      env: DOCKER_OS=none
-      install: skip # bundle install is not required
-      script: bash ./docker_push.sh
+      env: DOCKER_OS=CENTOS
+      script: bash docker_push.sh
