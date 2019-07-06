@@ -9,6 +9,8 @@ matrix:
   include:
   - env: UBUNTU=true
   - env: CENTOS=true
+before_install:
+  - chmod +x build*.sh
 script:
   - echo "Build local image"
   - if [[ "$UBUNTU" == "true" ]]; then ./build-ubuntu.sh ; fi
