@@ -16,7 +16,7 @@ and definition of persistent external modules.
 Start Gerrit Code Review in its demo/staging out-of-the-box setup:
 
 ```
-docker run -ti -p 8080:8080 -p 29418:29418 gerritcodereview/gerrit
+docker run -ti -p 8080:8080 -p 29418:29418 nguoianphu/docker-gerrit
 ```
 
 Wait a few minutes until the ```Gerrit Code Review NNN ready``` message appears,
@@ -44,14 +44,14 @@ Navigate to either `./centos/7` or `./ubuntu/18` to build the centos- or ubuntu-
 respectively. Then run:
 
 ```
-docker build -t gerritcodereview/gerrit:$(git describe) .
+docker build -t docker-gerrit:$(git describe) .
 ```
 
 To build an image containing a development build of Gerrit, e.g. to test a change, run the following
 command instead:
 
 ```
-docker build --build-arg GERRIT_WAR_URL="<url>" -t gerritcodereview/gerrit -f Dockerfile-dev .
+docker build --build-arg GERRIT_WAR_URL="<url>" -t docker-gerrit -f Dockerfile-dev .
 ```
 
 The `<url>` passed to the `GERRIT_WAR_URL`-build argument has to point to a Gerrit-`.war`-file.
