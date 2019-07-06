@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+env:
+  global:
+    - CENTOS_VERSION=7
+    - UBUNTU_VERSION=18
+matrix:
+  include:
+  - env: UBUNTU=true
+  - env: CENTOS=true
+script:
+  - echo "Build local image"
+  - if [[ "$UBUNTU"]]; then ./build-ubuntu.sh ; fi
+  - if [[ "$CENTOS"]]; then ./build-centos.sh ; fi
