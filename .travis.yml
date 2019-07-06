@@ -10,8 +10,13 @@ matrix:
   - env: UBUNTU=true
   - env: CENTOS=true
 before_install:
-  - chmod +x build*.sh
+  - chmod +x *.sh
 script:
   - echo "Build local image"
   - if [[ "$UBUNTU" == "true" ]]; then ./build-ubuntu.sh ; fi
   - if [[ "$CENTOS" == "true" ]]; then ./build-centos.sh ; fi
+deploy:
+  provider: script
+  script: bash docker_push.sh
+  on:
+    branch: master
