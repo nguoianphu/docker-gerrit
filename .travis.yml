@@ -5,18 +5,18 @@ env:
   global:
     - CENTOS_VERSION=7
     - UBUNTU_VERSION=18
-matrix:
-  include:
-  - env: CENTOS=true
-  - env: UBUNTU=true
+env:
+  - DOCKER_OS="CENTOS"
+  - DOCKER_OS="UBUNTU"
 before_install:
   - chmod +x *.sh
 script:
   - echo "Build local image"
-  - if [[ "$CENTOS" == "true" ]]; then ./build-centos.sh ; fi
-  - if [[ "$UBUNTU" == "true" ]]; then ./build-ubuntu.sh ; fi
-deploy:
-  provider: script
-  script: bash docker_push.sh
-  on:
-    branch: master
+  - if [[ "$DOCKER_OS=="CENTOS" ]]; then ./build-centos.sh ; fi
+  - if [[ "$DOCKER_OS=="UBUNTU" ]]; then ./build-ubuntu.sh ; fi
+jobs:
+  include:
+    - stage: deploy
+      env: DOCKER_OS=none
+      install: skip # bundle install is not required
+      script: bash ./docker_push.sh
