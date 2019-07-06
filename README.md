@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/nguoianphu/docker-gerrit.svg?branch=master)](https://travis-ci.org/nguoianphu/docker-gerrit)
 
+---
+
 The official Gerrit Code Review image with an out-of-the-box setup
 with H2 and DEVELOPMENT account setup.
 
